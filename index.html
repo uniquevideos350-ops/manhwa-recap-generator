@@ -75,3 +75,42 @@
   <p>Yeh aapka pehla test page hai!</p>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manhwa Script Generator</title>
+</head>
+<body>
+  <h1>Upload Manhwa Panel</h1>
+  <input type="file" id="panelUpload" accept="image/*">
+  <button onclick="uploadPanel()">Generate Script</button>
+
+  <h2>Result:</h2>
+  <div id="result"></div>
+
+  <script>
+    async function uploadPanel() {
+      const fileInput = document.getElementById('panelUpload');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert("Please select an image!");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("panel", file);
+
+      const response = await fetch("/upload", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+      document.getElementById("result").innerText = data.script;
+    }
+  </script>
+</body>
+</html>
