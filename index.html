@@ -6,7 +6,72 @@
   <title>Manhwa Script Generator</title>
 </head>
 <body>
-  <h1>Welcome to Manhwa Script Generator</h1>
+  <h1><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manhwa Script Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 14px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>📖 Manhwa Script Generator</h1>
+  <p>नीचे अपना manhwa text डालो और script generate करो:</p>
+  
+  <textarea id="inputText" placeholder="यहाँ manhwa का text लिखो..."></textarea><br>
+  <button onclick="generateScript()">Generate Script</button>
+  
+  <div class="output" id="outputText"></div>
+  
+  <script>
+    function generateScript() {
+      let input = document.getElementById("inputText").value;
+      if(input.trim() === "") {
+        document.getElementById("outputText").innerHTML = "❌ कृपया कुछ text डालो।";
+        return;
+      }
+      
+      // Simple transformation (ये example है)
+      let script = "👉 Script Start:\n\n";
+      script += input.replace(/([.?!])\s*/g, "$1\n");
+      script += "\n\n👉 Script End.";
+      
+      document.getElementById("outputText").innerText = script;
+    }
+  </script>
+</body>
+</html></h1>
   <p>Yeh aapka pehla test page hai!</p>
 </body>
 </html>
